@@ -232,7 +232,7 @@ ip dhcp pool VLAN140
 </details>
 
 ### ⚙️ VLANs y Switch (SW1 y SW2) config
-los puertos hacia los AP estan en modo access(VLAN taggin not suppore on AP).
+Los puertos hacia los AP estan en modo access(VLAN taggin not suppore on AP).
 <details> 
  
 ```bash
@@ -275,6 +275,7 @@ interface f0/24
 interface g0/1
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30,50,99
+
 ! Puerto Trunk hacia router R2
 interface g0/2
  switchport mode trunk
@@ -421,3 +422,5 @@ Este laboratorio demuestra que soy capaz de:
 - Integrar WiFi seguro con ACLs y DHCP
 - Configurar routers, switches y APs en un entorno empresarial
 - Documentar cada dispositivo y estructura de red de forma profesional
+## Capturas
+
