@@ -1,4 +1,4 @@
-#🏢 Simulación de Red Empresarial – VLANs, OSPF, HSRP, DHCP, ACL & WiFi
+# 🏢 Simulación de Red Empresarial – VLANs, OSPF, HSRP, DHCP, ACL & WiFi
 ## 👤 Autor
 - **Carlos Saldaña**                                                          
 - **Correo**: [c.a.saldana20@gmail.com](mailto:c.a.sadlana20@gmail.com)
