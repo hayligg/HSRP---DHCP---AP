@@ -190,8 +190,9 @@ interface g0/0.110
  ip address 192.168.110.1 255.255.255.0
 
 interface g0/0.120
+
 ```
- </summary>
+</summary>
 
 ```bash
 Subinterfaces VLANs
