@@ -270,15 +270,6 @@ router ospf 1
  network 10.0.0.0 0.0.0.3 area 0
  network 10.0.0.4 0.0.0.3 area 0
 ```
-
-### 🧭 VLANs & Inter-VLAN Routing
-All VLANs are trunked to routers via router-on-a-stick setup using subinterfaces.
-
-```bash
-interface g0/0.110
- encapsulation dot1Q 110
- ip address 192.168.110.1 255.255.255.0
-```
 ### 📶 Access Point Integration
 WiFi access point configured on VLAN 130 at the branch site, operating in access mode (no VLAN tagging), served by DHCP from R3.
 
@@ -306,9 +297,34 @@ Interface g0/0.140
 ip access-group 140 in
 
 ```
+WiFi HQ (VLAN 50) totalmente aislado de la red local.
+
+```bash
+Bloquea acceso a otras VLAN locales en HQ
+deny ip 192.168.50.0 0.0.0.255 192.168.10.0 0.0.0.255
+deny ip 192.168.50.0 0.0.0.255 192.168.20.0 0.0.0.255
+deny ip 192.168.50.0 0.0.0.255 192.168.30.0 0.0.0.255
+permit udp host 192.168.99.10 eq 67 any eq 68
+permit udp host 192.168.99.10 eq 68 any eq 67
+deny ip 192.168.50.0 0.0.0.255 host 192.168.99.10
+permit ip 192.168.50.0 0.0.0.255 any 
 
 
+Bloquea acceso a HQ
+ deny ip 192.168.50.0 0.0.0.255 192.168.110.0 0.0.0.255
+ deny ip 192.168.50.0 0.0.0.255 192.168.120.0 0.0.0.255
+ deny ip 192.168.50.0 0.0.0.255 192.168.140.0 0.0.0.255
 
+
+Permisos
+permit udp host 192.168.99.10 eq 67 any eq 68
+permit udp host 192.168.99.10 eq 68 any eq 67
+permit ip 192.168.50.0 0.0.0.255 any 
+
+Interface g0/0.50
+ip access-group 150 in
+
+```
 ---
 
 ## 🧪 What This Project Demonstrates
