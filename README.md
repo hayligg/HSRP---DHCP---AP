@@ -1,5 +1,8 @@
 🏢 Simulación de Red Empresarial – VLANs, OSPF, HSRP, DHCP, ACL & WiFi
-
+## 👤 Autor
+- **Carlos Saldaña**                                                          
+- **Correo**: [c.a.saldana20@gmail.com](mailto:c.a.sadlana20@gmail.com)
+- **LinkedIn**: [linkedin.com/in/carlos-saldana](www.linkedin.com/in/carlos-saldaña-candanedo-720426183)
 ## 📋 Descripción General del Proyecto
 Este proyecto realizado en Packet Tracer simula una red de una empresa de tamaño medio, con una sede central (HQ) y una sucursal remota (Branch). Está diseñado para demostrar habilidades esenciales de redes a nivel CCNA, incluyendo:
 
