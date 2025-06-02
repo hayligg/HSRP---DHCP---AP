@@ -43,12 +43,48 @@ Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure
 
 **Example:**
 ```bash
+! R1 - HQ Primary Router Configuration
+
+! Subinterfaces for VLANs
 interface g0/0.10
  encapsulation dot1Q 10
  ip address 192.168.10.2 255.255.255.0
  standby 10 ip 192.168.10.1
  standby 10 priority 110
  standby 10 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.2 255.255.255.0
+ standby 20 ip 192.168.20.1
+ standby 20 priority 110
+ standby 20 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.2 255.255.255.0
+ standby 300 ip 192.168.30.1
+ standby 30 priority 110
+ standby 30 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.50
+ encapsulation dot1Q 50
+ ip address 192.168.50.2 255.255.255.0
+ standby 50 ip 192.168.50.1
+ standby 50 priority 110
+ standby 50 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.2 255.255.255.0
+ standby 99 ip 192.168.99.1
+ standby 99 priority 110
+ standby 99 preempt
+
 ```
 
 ### 📡 OSPF (Open Shortest Path First)
