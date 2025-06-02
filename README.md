@@ -15,19 +15,20 @@ This Packet Tracer project simulates a **medium-sized enterprise network** with 
 ## 🧱 Network Topology Summary
 
 **Headquarters (HQ):**
-- VLAN 10 – AdminHQ – 192.168.10.0/24
-- VLAN 20 – ITHQ – 192.168.20.0/24
-- VLAN 50 – WiFiHQ – 192.168.50.0/24
-- VLAN 99 – ManagementHQ – 192.168.99.0/24
-- DHCP/DNS Server: 192.168.99.10
+- VLAN 10 – Admin – 192.168.10.0/24
+- VLAN 20 – IT – 192.168.20.0/24
+- VLAN 30 - HR - 192.168.30.0/24
+- VLAN 50 – WiFiCorp – 192.168.50.0/24
+- VLAN 99 – Management – 192.168.99.0/24
+- DHCP Server: 192.168.99.10
 - Redundancy via HSRP (R1 & R2)
 
 **Sucursal (Branch):**
-- VLAN 110 – AdminSucursal – 192.168.110.0/24
-- VLAN 120 – ITSucursal – 192.168.120.0/24
-- VLAN 130 – WiFiSucursal – 192.168.130.0/24
-- VLAN 199 – ManagementSucursal – 192.168.199.0/24
-- DHCP local in R3 (Sucursal router)
+- VLAN 110 – AdminBranch – 192.168.110.0/24
+- VLAN 120 – ITBranch – 192.168.120.0/24
+- VLAN 140 – GuestWiFi – 192.168.140.0/24
+- VLAN 99 – ManagementSucursal – 192.168.99.0/24
+- DHCP local in R3 (Branch router)
 
 **WAN Links:**
 - R1 ↔ R3: 10.0.0.0/30
