@@ -437,4 +437,11 @@ Servidor DHCP funcionando
 
 Access list en funcionamiendo al enviar ping a la VLAN 140 (192.168.140.11) desde la red local VLAN 110 (192.168.110.11).
 
+Pings hacia VLAN 140 no podra mandar respuesta de regreso generando el error
+
+![image alt](https://github.com/hayligg/HSRP---DHCP---AP/blob/abed8cf8c4669552a8510f55bbe0b141555653af/ping%20a%20acl.png)
+
+Pings fuera de esta VLAN seran bloqueador por el ACL
+
+![image alt](https://github.com/hayligg/HSRP---DHCP---AP/blob/abed8cf8c4669552a8510f55bbe0b141555653af/ping%20desde%20acl.png)
 
