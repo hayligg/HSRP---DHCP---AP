@@ -47,7 +47,7 @@ Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure
  
 ```bash
 R1 - HQ Router HSRP - DHCP relay
-Subinterfaces for VLANs
+Subinterfaces VLANs
 interface g0/0.10
  encapsulation dot1Q 10
  ip address 192.168.10.2 255.255.255.0
@@ -107,6 +107,74 @@ interface g0/1
  no shutdown
 ```
 </details>
+<details> 
+
+<summary>Configuracion del Router R2
+ 
+```bash
+R2 - HQ Standby Router Config
+
+Subinterfaces VLANs
+interface g0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.3 255.255.255.0
+ standby 10 ip 192.168.10.1
+ standby 10 priority 100
+ standby 10 preempt
+ ip helper-address 192.168.99.10 ...
+```
+ </summary>
+ 
+```bash
+R2 - HQ Standby Router Config
+
+Subinterfaces VLANs
+interface g0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.3 255.255.255.0
+ standby 10 ip 192.168.10.1
+ standby 10 priority 100
+ standby 10 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.3 255.255.255.0
+ standby 20 ip 192.168.20.1
+ standby 20 priority 100
+ standby 20 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.3 255.255.255.0
+ standby 30 ip 192.168.30.1
+ standby 30 priority 100
+ standby 30 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.50
+ encapsulation dot1Q 50
+ ip address 192.168.50.3 255.255.255.0
+ standby 50 ip 192.168.50.1
+ standby 50 priority 100
+ standby 50 preempt
+ ip helper-address 192.168.99.10
+
+interface g0/0.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.3 255.255.255.0
+ standby 99 ip 192.168.99.1
+ standby 99 priority 100
+ standby 99 preempt
+
+! WAN link to R3
+interface g0/1
+ ip address 10.0.0.5 255.255.255.252
+ no shutdown
+```
+</details>
+
 📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales
 
 **R1:**
@@ -154,7 +222,7 @@ interface g0/0.110
  ip address 192.168.110.1 255.255.255.0
 ```
 
-### 📬 DHCP Server Configuration (Sucursal Local)
+📬 DHCP Server Configuration (Sucursal Local)
 ```bash
 ip dhcp pool VLAN110
  network 192.168.110.0 255.255.255.0
