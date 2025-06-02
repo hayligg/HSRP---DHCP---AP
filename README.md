@@ -32,7 +32,7 @@ This Packet Tracer project simulates a **medium-sized enterprise network** with 
 **WAN Links:**
 - R1 ↔ R3: 10.0.0.0/30
 - R2 ↔ R3: 10.0.0.4/30
-![project2drawio.svg]
+![image alt](project2drawio.svg)
 ---
 
 ## ⚙️ Key Technologies Demonstrated
