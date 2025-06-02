@@ -43,6 +43,7 @@ Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure
 
 <details> 
 <summary>Configuracion del Router R1 </summary>
+ 
 ```bash
 ! R1 - HQ Primary Router Configuration
 
@@ -87,7 +88,7 @@ interface g0/0.99
  standby 99 preempt
 
 ```
-
+</details>
 ### 📡 OSPF (Open Shortest Path First)
 Dynamic routing used across all routers (R1, R2, R3), advertising all local networks.
 
