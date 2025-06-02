@@ -1,4 +1,4 @@
-🏢 Simulación de Red Empresarial – VLANs, OSPF, HSRP, DHCP, ACL & WiFi
+#🏢 Simulación de Red Empresarial – VLANs, OSPF, HSRP, DHCP, ACL & WiFi
 ## 👤 Autor
 - **Carlos Saldaña**                                                          
 - **Correo**: [c.a.saldana20@gmail.com](mailto:c.a.sadlana20@gmail.com)
@@ -6,12 +6,12 @@
 ## 📋 Descripción General del Proyecto
 Este proyecto realizado en Packet Tracer simula una red de una empresa de tamaño medio, con una sede central (HQ) y una sucursal remota (Branch). Está diseñado para demostrar habilidades esenciales de redes a nivel CCNA, incluyendo:
 
-- ✅ Segmentación por VLAN por sede
-- ✅ Configuración de gateway redundante con HSRP
-- ✅ Enrutamiento dinámico con OSPF
-- ✅ Asignación de direcciones IP con DHCP local y centralizado
-- ✅ Control de tráfico entre VLANs mediante ACLs
-- ✅ Integración de conectividad inalámbrica (APs)
+- Segmentación por VLAN por sede
+- Configuración de gateway redundante con HSRP
+- Enrutamiento dinámico con OSPF
+- Asignación de direcciones IP con DHCP local y centralizado
+- Control de tráfico entre VLANs mediante ACLs
+- Integración de conectividad inalámbrica (APs)
 
 ---
 
