@@ -42,6 +42,8 @@ This Packet Tracer project simulates a **medium-sized enterprise network** with 
 Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure R1 is active unless failure occurs.
 
 <details> 
+
+<summary>Configuracion del Router R1
  R1 - HQ Router Config
 
 Subinterfaces for VLANs
@@ -51,8 +53,7 @@ interface g0/0.10
  standby 10 ip 192.168.10.1
  standby 10 priority 110
  standby 10 preempt
- ip helper-address 192.168.99.10 ...
-<summary>Configuracion del Router R1 </summary>
+ ip helper-address 192.168.99.10 ...</summary>
  
 ```bash
 R1 - HQ Router Config
