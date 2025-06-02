@@ -232,6 +232,7 @@ ip dhcp pool VLAN140
 </details>
 
 ### ⚙️ VLANs y Switch (SW1 y SW2) config
+los puertos hacia los AP estan en modo access(VLAN taggin not suppore on AP).
 <details> 
  
 ```bash
@@ -354,9 +355,9 @@ router ospf 1
  network 10.0.0.0 0.0.0.3 area 0
  network 10.0.0.4 0.0.0.3 area 0
 ```
-### 📶 Access Point Integration
-Un punto de acceso inalámbrico está configurado en VLAN 50 por un Servidor DHCP y en VLAN 140con obtención automática de IP por DHCP desde R3.
-(VLAN taggin not suppore on AP)
+### 📶 Access Point 
+Un punto de acceso inalámbrico está configurado en VLAN 50 por un Servidor DHCP y en VLAN 140 con obtención automática de IP por DHCP desde R3.
+
 
 ### 🚪 Access Control Lists (ACLs)
 WiFi branch (VLAN 140) totalmente aislada de la red local y HQ.
