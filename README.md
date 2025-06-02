@@ -32,7 +32,7 @@ This Packet Tracer project simulates a **medium-sized enterprise network** with 
 **WAN Links:**
 - R1 ↔ R3: 10.0.0.0/30
 - R2 ↔ R3: 10.0.0.4/30
-![image alt]([project2drawio.svg](https://github.com/hayligg/HSRP---DHCP---AP/blob/74cb5e87f724667a03794be5ea93734946b32da0/Porject%20dhcp%20hsrp.png))
+![image alt](https://github.com/hayligg/HSRP---DHCP---AP/blob/74cb5e87f724667a03794be5ea93734946b32da0/Porject%20dhcp%20hsrp.png)
 ---
 
 ## ⚙️ Key Technologies Demonstrated
