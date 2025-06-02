@@ -424,10 +424,15 @@ Este laboratorio demuestra que soy capaz de:
 - Documentar cada dispositivo y estructura de red de forma profesional
 ## Capturas
 R1(HOT) en fallo, entra R2(Standy)
+
 ![image alt](https://github.com/hayligg/HSRP---DHCP---AP/blob/a89be025b5fa85ceb0756f417d78a901fb382bfa/R2%20HSRP%20pt.png).
+
 R2 pasa a estar activo
+
 ![image alt](https://github.com/hayligg/HSRP---DHCP---AP/blob/a89be025b5fa85ceb0756f417d78a901fb382bfa/DHCP%20working.png).
+
 Servidor DHCP funcionando
+
 ![image alt](https://github.com/hayligg/HSRP---DHCP---AP/blob/a89be025b5fa85ceb0756f417d78a901fb382bfa/R2%20HSRP.png).
 
 
