@@ -44,7 +44,7 @@ Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure
 <details> 
 
 <summary>Configuracion del Router R1
-
+ 
 ```bash
 R1 - HQ Router HSRP - DHCP relay
 Subinterfaces for VLANs
@@ -55,7 +55,6 @@ interface g0/0.10
  standby 10 priority 110
  standby 10 preempt
  ip helper-address 192.168.99.10 ...
-
 ```
  </summary>
  
@@ -106,24 +105,11 @@ WAN a R3
 interface g0/1
  ip address 10.0.0.1 255.255.255.252
  no shutdown
-
 ```
 </details>
 📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales
 
 **R1:**
-<details> 
-
-<summary> OSPF 
- 
-```bash
-router ospf 1
- router-id 1.1.1.1
- network 192.168.10.0 0.0.0.255 area 0
- network 10.0.0.0 0.0.0.3 area 0
-```
-
-**R3 OSPF:**
 ```bash
 router ospf 1
  router-id 1.1.1.1
@@ -133,6 +119,30 @@ router ospf 1
  network 192.168.50.0 0.0.0.255 area 0
  network 192.168.99.0 0.0.0.255 area 0
  network 10.0.0.0 0.0.0.3 area 0
+```
+**R2:**
+```bash
+router ospf 1
+ router-id 2.2.2.2
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+ network 192.168.30.0 0.0.0.255 area 0
+ network 192.168.50.0 0.0.0.255 area 0
+ network 192.168.99.0 0.0.0.255 area 0
+ network 10.0.0.4 0.0.0.3 area 0
+
+```
+
+**R3 OSPF:**
+```bash
+router ospf 1
+ router-id 3.3.3.3
+ network 192.168.110.0 0.0.0.255 area 0
+ network 192.168.120.0 0.0.0.255 area 0
+ network 192.168.130.0 0.0.0.255 area 0
+ network 192.168.199.0 0.0.0.255 area 0
+ network 10.0.0.0 0.0.0.3 area 0
+ network 10.0.0.4 0.0.0.3 area 0
 ```
 
 ### 🧭 VLANs & Inter-VLAN Routing
