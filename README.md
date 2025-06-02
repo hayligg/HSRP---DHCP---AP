@@ -279,23 +279,29 @@ interface g0/0.110
  encapsulation dot1Q 110
  ip address 192.168.110.1 255.255.255.0
 ```
-
-📬 DHCP Server Configuration (Sucursal Local)
-```bash
-ip dhcp pool VLAN110
- network 192.168.110.0 255.255.255.0
- default-router 192.168.110.1
- dns-server 8.8.8.8
-```
-
 ### 🚪 Access Control Lists (ACLs)
-WiFi in the branch (VLAN 130) is fully isolated from local and HQ networks.
+WiFi branch (VLAN 140) totalmente aislada de la red local y HQ.
 
 ```bash
-ip access-list extended WIFI-SUCURSAL-OUT
- deny ip 192.168.130.0 0.0.0.255 192.168.110.0 0.0.0.255
- deny ip 192.168.130.0 0.0.0.255 192.168.10.0 0.0.0.255
- permit ip 192.168.130.0 0.0.0.255 any
+Bloquea acceso a otras VLAN locales en Branch
+ deny ip 192.168.140.0 0.0.0.255 192.168.110.0 0.0.0.255
+ deny ip 192.168.140.0 0.0.0.255 192.168.120.0 0.0.0.255
+ deny ip 192.168.140.0 0.0.0.255 192.168.99.0 0.0.0.255
+
+
+Bloquea acceso a HQ
+ deny ip 192.168.140.0 0.0.0.255 192.168.10.0 0.0.0.255
+ deny ip 192.168.140.0 0.0.0.255 192.168.20.0 0.0.0.255
+ deny ip 192.168.140.0 0.0.0.255 192.168.30.0 0.0.0.255
+ deny ip 192.168.140.0 0.0.0.255 192.168.50.0 0.0.0.255
+ deny ip 192.168.140.0 0.0.0.255 192.168.20.0 0.0.0.255
+
+Permite todo lo demás (Internet, DNS externo, etc.)
+permit ip 192.168.140.0 0.0.0.255 any
+
+Interface g0/0.140
+ip access-group 140 in
+
 ```
 
 ### 📶 Access Point Integration
