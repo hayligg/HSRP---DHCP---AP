@@ -1,18 +1,18 @@
-# 🏢 Enterprise Network Simulation – Multi-VLAN, OSPF, HSRP, DHCP, ACL & WiFi
+🏢 Simulación de Red Empresarial – VLANs, OSPF, HSRP, DHCP, ACL & WiFi
 
-## 📋 Project Overview
-This Packet Tracer project simulates a **medium-sized enterprise network** with a headquarters (HQ) and a branch office (Sucursal). It is designed to demonstrate core CCNA-level enterprise networking concepts including:
+## 📋 Descripción General del Proyecto
+Este proyecto realizado en Packet Tracer simula una red de una empresa de tamaño medio, con una sede central (HQ) y una sucursal remota (Branch). Está diseñado para demostrar habilidades esenciales de redes a nivel CCNA, incluyendo:
 
-- ✅ VLAN segmentation per site
-- ✅ Redundant gateway setup using HSRP
-- ✅ OSPF routing between routers
-- ✅ Local and centralized DHCP configuration
-- ✅ Access Control Lists (ACLs) for VLAN isolation
-- ✅ Integration of wireless networking via Access Points (APs)
+- ✅ Segmentación por VLAN por sede
+- ✅ Configuración de gateway redundante con HSRP
+- ✅ Enrutamiento dinámico con OSPF
+- ✅ Asignación de direcciones IP con DHCP local y centralizado
+- ✅ Control de tráfico entre VLANs mediante ACLs
+- ✅ Integración de conectividad inalámbrica (APs)
 
 ---
 
-## 🧱 Network Topology Summary
+## 🧱 Topologia de red
 
 **Headquarters (HQ):**
 - VLAN 10 – Admin – 192.168.10.0/24
@@ -21,7 +21,7 @@ This Packet Tracer project simulates a **medium-sized enterprise network** with 
 - VLAN 50 – WiFiCorp – 192.168.50.0/24
 - VLAN 99 – Management – 192.168.99.0/24
 - DHCP Server: 192.168.99.10
-- Redundancy via HSRP (R1 & R2)
+- Redundancia via HSRP (R1 y R2)
 
 **Sucursal (Branch):**
 - VLAN 110 – AdminBranch – 192.168.110.0/24
@@ -39,7 +39,7 @@ This Packet Tracer project simulates a **medium-sized enterprise network** with 
 ## ⚙️ Key Technologies Demonstrated
 
 ### 🔀 HSRP (Hot Standby Router Protocol)
-Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure R1 is active unless failure occurs.
+Configurado en R1 y R2 para garantizar alta disponibilidad en la sede central. R1 actúa como router activo y R2 como respaldo, con prioridad y preempt.
 
 <details> 
 
@@ -230,7 +230,89 @@ ip dhcp pool VLAN140
 
 ```
 </details>
-📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales
+### ⚙️ VLANs y Switch (SW1 y SW2) config
+<details> 
+ 
+```bash
+! HQ Switch config
+
+! Crear VLANs
+vlan 10
+ name Admin
+vlan 20
+ name ITH
+vlan 30
+ name HR
+vlan 50
+ name WiFiHQ
+vlan 99
+ name ManagementHQ
+
+! Puertos Access
+interface range f0/1 - 5
+ switchport mode access
+ switchport access vlan 10
+
+interface range f0/6 - 10
+ switchport mode access
+ switchport access vlan 20
+
+interface range f0/11 - 15
+ switchport mode access
+ switchport access vlan 30
+
+interface f0/20
+ switchport mode access
+ switchport access vlan 50
+
+interface f0/24
+ switchport mode access
+ switchport access vlan 99
+
+! Puerto Trunk hacia router R1
+interface g0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,50,99
+! Puerto Trunk hacia router R2
+interface g0/2
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,50,99
+
+! Sucursal Switch Configuration
+
+! Crear VLANs
+vlan 110
+ name AdminBranch
+vlan 120
+ name ITBRanch
+vlan 140
+ name GuestWiFi
+vlan 99
+ name Management
+
+! Puertos Access
+interface range f0/1 - 5
+ switchport mode access
+ switchport access vlan 110
+
+interface range f0/6 - 10
+ switchport mode access
+ switchport access vlan 120
+
+interface f0/20
+ switchport mode access
+ switchport access vlan 140
+
+
+
+! Puerto Trunk hacia el router R3
+interface g0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 110,120,140
+
+``` 
+<details>
+📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales.
 
 **R1 OSPF:**
 
@@ -271,7 +353,8 @@ router ospf 1
  network 10.0.0.4 0.0.0.3 area 0
 ```
 ### 📶 Access Point Integration
-WiFi access point configured on VLAN 130 at the branch site, operating in access mode (no VLAN tagging), served by DHCP from R3.
+Un punto de acceso inalámbrico está configurado en VLAN 50 por un Servidor DHCP y en VLAN 140con obtención automática de IP por DHCP desde R3.
+(VLAN taggin not suppore on AP)
 
 ### 🚪 Access Control Lists (ACLs)
 WiFi branch (VLAN 140) totalmente aislada de la red local y HQ.
@@ -296,18 +379,17 @@ permit ip 192.168.140.0 0.0.0.255 any
 Interface g0/0.140
 ip access-group 140 in
 
+
 ```
-WiFi HQ (VLAN 50) totalmente aislado de la red local.
+WiFi HQ (VLAN 50) totalmente aislado de la red local y la sucursal.
 
 ```bash
 Bloquea acceso a otras VLAN locales en HQ
 deny ip 192.168.50.0 0.0.0.255 192.168.10.0 0.0.0.255
 deny ip 192.168.50.0 0.0.0.255 192.168.20.0 0.0.0.255
 deny ip 192.168.50.0 0.0.0.255 192.168.30.0 0.0.0.255
-permit udp host 192.168.99.10 eq 67 any eq 68
-permit udp host 192.168.99.10 eq 68 any eq 67
 deny ip 192.168.50.0 0.0.0.255 host 192.168.99.10
-permit ip 192.168.50.0 0.0.0.255 any 
+
 
 
 Bloquea acceso a HQ
@@ -327,12 +409,12 @@ ip access-group 150 in
 ```
 ---
 
-## 🧪 What This Project Demonstrates
-This network simulation showcases your ability to:
+## 🧪 Proposito de proyecto
+Este laboratorio demuestra que soy capaz de:
 
-- Design and configure a segmented Layer 2/3 network
-- Implement redundancy and high availability
-- Configure multi-site routing and failover using OSPF
-- Deploy and secure wireless clients using ACLs
-- Implement local DHCP per VLAN and per site
-- Structure and document full network configs for reuse or training
+- Diseñar y configurar una red segmentada por VLAN y subredes
+- Implementar redundancia y alta disponibilidad con HSRP
+- Usar enrutamiento dinámico multisitio con OSPF
+- Integrar WiFi seguro con ACLs y DHCP
+- Configurar routers, switches y APs en un entorno empresarial
+- Documentar cada dispositivo y estructura de red de forma profesional
