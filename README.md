@@ -279,6 +279,9 @@ interface g0/0.110
  encapsulation dot1Q 110
  ip address 192.168.110.1 255.255.255.0
 ```
+### 📶 Access Point Integration
+WiFi access point configured on VLAN 130 at the branch site, operating in access mode (no VLAN tagging), served by DHCP from R3.
+
 ### 🚪 Access Control Lists (ACLs)
 WiFi branch (VLAN 140) totalmente aislada de la red local y HQ.
 
@@ -304,8 +307,7 @@ ip access-group 140 in
 
 ```
 
-### 📶 Access Point Integration
-WiFi access point configured on VLAN 130 at the branch site, operating in access mode (no VLAN tagging), served by DHCP from R3.
+
 
 ---
 
