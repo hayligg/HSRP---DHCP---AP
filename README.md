@@ -207,7 +207,7 @@ router ospf 1
  router-id 3.3.3.3
  network 192.168.110.0 0.0.0.255 area 0
  network 192.168.120.0 0.0.0.255 area 0
- network 192.168.130.0 0.0.0.255 area 0
+ network 192.168.140.0 0.0.0.255 area 0
  network 192.168.99.0 0.0.0.255 area 0
  network 10.0.0.0 0.0.0.3 area 0
  network 10.0.0.4 0.0.0.3 area 0
