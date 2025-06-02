@@ -174,7 +174,24 @@ interface g0/1
  no shutdown
 ```
 </details>
-### ⚙️ Configuracion de R3 - Pool Local
+
+⚙️R3 - Pool Local
+
+<details> 
+
+<summary>Configuracion del Router 3
+ 
+```bash
+R3 - Branch Router Config
+
+Subinterfaces VLANs
+interface g0/0.110
+ encapsulation dot1Q 110
+ ip address 192.168.110.1 255.255.255.0
+
+interface g0/0.120
+```
+ </summary>
 
 ```bash
 Subinterfaces VLANs
