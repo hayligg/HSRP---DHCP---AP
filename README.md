@@ -41,7 +41,8 @@ This Packet Tracer project simulates a **medium-sized enterprise network** with 
 ### 🔀 HSRP (Hot Standby Router Protocol)
 Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure R1 is active unless failure occurs.
 
-**Example:**
+<details> 
+<summary>Configuracion del Router R1 </summary>
 ```bash
 ! R1 - HQ Primary Router Configuration
 
