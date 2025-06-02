@@ -174,10 +174,46 @@ interface g0/1
  no shutdown
 ```
 </details>
+### ⚙️ Configuracion de R3 - Pool Local
+
+```bash
+Subinterfaces VLANs
+interface g0/0.110
+ encapsulation dot1Q 110
+ ip address 192.168.110.1 255.255.255.0
+
+interface g0/0.120
+ encapsulation dot1Q 120
+ ip address 192.168.120.1 255.255.255.0
+
+interface g0/0.140
+ encapsulation dot1Q 140
+ ip address 192.168.140.1 255.255.255.0
+
+interface g0/0.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.1 255.255.255.0
+
+DHCP Pools
+ip dhcp pool VLAN110
+ network 192.168.110.0 255.255.255.0
+ default-router 192.168.110.1
+ dns-server 8.8.8.8
+
+ip dhcp pool VLAN120
+ network 192.168.120.0 255.255.255.0
+ default-router 192.168.120.1
+ dns-server 8.8.8.8
+
+ip dhcp pool VLAN140
+ network 192.168.140.0 255.255.255.0
+ default-router 192.168.130.1
+ dns-server 8.8.8.8
+```
 
 📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales
 
-**R1:**
+**R1 OSPF:**
 ```bash
 router ospf 1
  router-id 1.1.1.1
@@ -187,8 +223,8 @@ router ospf 1
  network 192.168.50.0 0.0.0.255 area 0
  network 192.168.99.0 0.0.0.255 area 0
  network 10.0.0.0 0.0.0.3 area 0
-```
-**R2:**
+``` 
+**R2 OSPF:**
 ```bash
 router ospf 1
  router-id 2.2.2.2
