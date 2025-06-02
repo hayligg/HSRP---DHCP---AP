@@ -230,6 +230,7 @@ ip dhcp pool VLAN140
 
 ```
 </details>
+
 ### ⚙️ VLANs y Switch (SW1 y SW2) config
 <details> 
  
@@ -312,6 +313,7 @@ interface g0/1
 
 ``` 
 <details>
+ 
 📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales.
 
 **R1 OSPF:**
