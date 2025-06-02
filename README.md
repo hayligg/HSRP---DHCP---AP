@@ -46,7 +46,7 @@ Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure
 <summary>Configuracion del Router R1
 
 ```bash
-R1 - HQ Router Config
+R1 - HQ Router HSRP - DHCP relay
 Subinterfaces for VLANs
 interface g0/0.10
  encapsulation dot1Q 10
@@ -62,7 +62,7 @@ interface g0/0.10
 ```bash
 R1 - HQ Router Config
 
-Subinterfaces for VLANs
+Subinterfaces VLANs
 interface g0/0.10
  encapsulation dot1Q 10
  ip address 192.168.10.2 255.255.255.0
@@ -102,12 +102,20 @@ interface g0/0.99
  standby 99 priority 110
  standby 99 preempt
 
+WAN a R3
+interface g0/1
+ ip address 10.0.0.1 255.255.255.252
+ no shutdown
+
 ```
 </details>
-### 📡 OSPF (Open Shortest Path First)
-Dynamic routing used across all routers (R1, R2, R3), advertising all local networks.
+📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales
 
-**R1 OSPF:**
+**R1:**
+<details> 
+
+<summary> OSPF 
+ 
 ```bash
 router ospf 1
  router-id 1.1.1.1
@@ -118,10 +126,13 @@ router ospf 1
 **R3 OSPF:**
 ```bash
 router ospf 1
- router-id 3.3.3.3
- network 192.168.110.0 0.0.0.255 area 0
+ router-id 1.1.1.1
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+ network 192.168.30.0 0.0.0.255 area 0
+ network 192.168.50.0 0.0.0.255 area 0
+ network 192.168.99.0 0.0.0.255 area 0
  network 10.0.0.0 0.0.0.3 area 0
- network 10.0.0.4 0.0.0.3 area 0
 ```
 
 ### 🧭 VLANs & Inter-VLAN Routing
