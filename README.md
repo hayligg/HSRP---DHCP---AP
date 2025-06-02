@@ -226,11 +226,13 @@ ip dhcp pool VLAN140
  network 192.168.140.0 255.255.255.0
  default-router 192.168.130.1
  dns-server 8.8.8.8
+
 ```
 
 📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales
 
 **R1 OSPF:**
+
 ```bash
 router ospf 1
  router-id 1.1.1.1
@@ -242,6 +244,7 @@ router ospf 1
  network 10.0.0.0 0.0.0.3 area 0
 ``` 
 **R2 OSPF:**
+
 ```bash
 router ospf 1
  router-id 2.2.2.2
@@ -255,6 +258,7 @@ router ospf 1
 ```
 
 **R3 OSPF:**
+
 ```bash
 router ospf 1
  router-id 3.3.3.3
