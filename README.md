@@ -312,7 +312,7 @@ interface g0/1
  switchport trunk allowed vlan 110,120,140
 
 ``` 
-<details>
+</details>
  
 📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales.
 
@@ -381,8 +381,8 @@ permit ip 192.168.140.0 0.0.0.255 any
 Interface g0/0.140
 ip access-group 140 in
 
-
 ```
+
 WiFi HQ (VLAN 50) totalmente aislado de la red local y la sucursal.
 
 ```bash
