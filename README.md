@@ -45,8 +45,8 @@ Implemented on R1 and R2 for VLANs in HQ, using priorities and preempt to ensure
 
 <summary>Configuracion del Router R1
 
- R1 - HQ Router Config
 ```bash
+R1 - HQ Router Config
 Subinterfaces for VLANs
 interface g0/0.10
  encapsulation dot1Q 10
