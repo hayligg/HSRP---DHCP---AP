@@ -435,4 +435,6 @@ Servidor DHCP funcionando
 
 ![image alt](https://github.com/hayligg/HSRP---DHCP---AP/blob/a89be025b5fa85ceb0756f417d78a901fb382bfa/DHCP%20working.png).
 
+Access list en funcionamiendo al enviar ping a la VLAN 140 (192.168.140.11) desde la red local VLAN 110 (192.168.110.11).
+
 
