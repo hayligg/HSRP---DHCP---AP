@@ -229,7 +229,7 @@ ip dhcp pool VLAN140
  dns-server 8.8.8.8
 
 ```
-
+</details>
 📡 OSPF protocolo de ruteo para R1, R1 y R3, anunciando todas las redes locales
 
 **R1 OSPF:**
